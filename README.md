@@ -6,7 +6,12 @@ A small script to browse ebsrc-to-listing.
 
 ### Compiling
 
-Please compile this with C++17 or higher.   
+This *should* compile :   
+
+    mkdir -p build
+    cd build
+    cmake ..
+    make
 
 ---
 
