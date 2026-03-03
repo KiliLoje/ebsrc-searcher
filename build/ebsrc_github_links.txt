@@ -1,0 +1,10 @@
+https://github.com/Herringway/ebsrc/blob/main/src/unknown/EF/EF01D2.asm#L19-L20
+https://github.com/Herringway/ebsrc/blob/main/src/unknown/C4/C43E31.asm#L38-L39
+https://github.com/Herringway/ebsrc/blob/main/src/unknown/C4/C440B5.asm#L25-L26
+https://github.com/Herringway/ebsrc/blob/main/src/unknown/C4/C4424A.asm#L22-L23
+https://github.com/Herringway/ebsrc/blob/main/src/unknown/C4/C445E1.asm#L152-L153
+https://github.com/Herringway/ebsrc/blob/main/src/unknown/C4/C44E61.asm#L72-L73
+https://github.com/Herringway/ebsrc/blob/main/src/unknown/C4/C44FF3.asm#L27-L28
+https://github.com/Herringway/ebsrc/blob/main/src/unknown/C4/C4827B.asm#L16-L17
+https://github.com/Herringway/ebsrc/blob/main/src/unknown/C4/C4999B.asm#L9-L10
+https://github.com/Herringway/ebsrc/blob/main/src/ending/render_cast_name_text.asm#L51-L52
