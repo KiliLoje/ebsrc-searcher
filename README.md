@@ -76,5 +76,5 @@ You will get an output similar to this :
     Successfully written data at ebscr_data.txt
     Successfully written data at ebscr_links.txt
 
-The data gets written to ebscr_data.txt and the links to ebscr_links.txt   
-
+The data gets written to ebscr_data.txt and the links to ebscr_links.txt in the same directory as where the ebsrc-scanner binary is.   
+It should be pretty easy to put that in a config file but I'm lazy.
