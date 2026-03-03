@@ -6,7 +6,7 @@
 namespace fs = std::filesystem;
 
 // write line by line all the string in data to a file at path.
-// WARNING DON'T USE THIS ON EXISTING FILE, IT WILL OVERWRITE IT
+// WARNING : DON'T USE THIS ON AN EXISTING FILE, IT WILL OVERWRITE IT
 bool write_to_file(const std::string &path, std::vector<std::string> data) {
   // open the file
   std::ofstream file;
@@ -114,19 +114,23 @@ scan_dir(const std::string &DIR_PATH,
          const std::vector<std::string> &instruction_set,
          std::vector<std::string> &ebscr_data) {
 
+  // intitialize the list of links
   std::vector<std::string> links{};
 
+  // iterate through each files
   for (const auto &entry : fs::recursive_directory_iterator(DIR_PATH)) {
     // skip non plain text files
     if (!entry.is_regular_file()) {
       return {};
     }
 
-    // intitialize file and link list
+    // intitialize file
     std::ifstream file(entry.path());
-
+    // scan the file
     std::vector<std::string> links_in_file =
         scan_file(file, instruction_set, ebscr_data);
+
+    // append links generated from that file to the link list
     for (const std::string &link : links_in_file) {
       links.push_back(link);
     }
@@ -179,16 +183,19 @@ int main(int argc, char **argv) {
     return 1;
   }
 
+  // scan the directory
   links = scan_dir(DIR_PATH, instruction_set, ebscr_data);
 
+  // print links to the console
   std::cout << "\n";
   for (const std::string &link : links)
     std::cout << link << "\n";
   std::cout << "\n";
 
+  // write ebscr_data to ebscr_data.txt
   if (!write_to_file("ebscr_data.txt", ebscr_data))
     return 1;
-
+  // write links to ebscr_links.txt
   if (!write_to_file("ebscr_links.txt", links))
     return 1;
 
