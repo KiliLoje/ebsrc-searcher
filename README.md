@@ -19,7 +19,9 @@ This *should* compile :
 ### Usage
 
 Make a .txt file with the text that you want to search for.   
-Like so :   
+This is an example :   
+
+    target-text.txt
 
     SBC #$50
     AND #$007F
@@ -64,6 +66,8 @@ You'd have spotted that last line `Successfully written links to ebsrc_link.txt`
 The program generates links to the specific portion of code spotted inside ebsrc.   
 
 ebsrc_text.txt will look similar to this :   
+
+    ebsrc_text.txt
 
     https://github.com/Herringway/ebsrc/blob/main/src/unknown/EF/EF01D2.asm#L19-L20
     https://github.com/Herringway/ebsrc/blob/main/src/unknown/C4/C43E31.asm#L38-L39
