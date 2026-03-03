@@ -67,28 +67,16 @@ scan_file(std::ifstream &file, const std::vector<std::string> &instruction_set,
 
   // iterate through the file
   while (std::getline(file, line)) {
-    // if every instructions are found
-    if (instruction_index >= instruction_set.size()) {
-      // construct the github link and add it to the list of links
-      links.push_back(github_link_constructor(listing_file, line_index,
-                                              instruction_set.size()));
-      // print infos to the console
-      std::cout << listing_file << "\n";
-      for (const std::string &instruction : addresses) {
-        std::cout << instruction << "\n";
-        ebscr_data.push_back(instruction);
-      }
-
-      instruction_index = 0;
-    }
+    line_index++;
 
     // ">>>" indicates a new file in ebsrc-to-linsting
     // this reset the line index and update the current file
-    if (line.rfind(">>>") != std::string::npos) {
+    if (line.rfind(">>>", 0) != std::string::npos) {
       listing_file = line;
 
       instruction_index = 0;
       line_index = 1;
+      addresses.clear();
       continue;
     }
 
@@ -97,12 +85,30 @@ scan_file(std::ifstream &file, const std::vector<std::string> &instruction_set,
       addresses.push_back(line);
 
       instruction_index += 1;
+      // if every instructions are found
+      if (instruction_index >= instruction_set.size()) {
+        // construct the github link and add it to the list of links
+        links.push_back(github_link_constructor(listing_file, line_index,
+                                                instruction_set.size()));
+        // print infos to the console
+        std::cout << listing_file << "\n";
+        for (const std::string &instruction : addresses) {
+          std::cout << instruction << "\n";
+          ebscr_data.push_back(instruction);
+        }
+
+        instruction_index = 0;
+      }
       continue;
+    }
+
+    // ignore lines that aren't on the github repo
+    if (line.rfind("   ", 0) != std::string::npos) {
+      line_index--;
     }
 
     addresses.clear();
     instruction_index = 0;
-    line_index++;
   }
   return links;
 }
